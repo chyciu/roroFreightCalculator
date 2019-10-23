@@ -1,0 +1,51 @@
+Krótki opis systemu
+Projekt zakłada utworzenie systemu umożliwiającego skalkulowanie frachtu morskiego na serwisie armatora ro-ro (roll in-roll off).
+
+Główne funkcje systemu
+Rejestracja klienta
+Wprowadzenie danych ładunku
+Skalkulowanie frachtu morskiego
+Zapisanie kalkulacji w bazie danych
+Wysyłanie oferty do klienta drogą e-mail
+Potwierdzanie zabukowania ładunku do przewozu
+
+Technologie
+Spring + Hibernate
+HTML / CSS
+
+Podstawowe byty
+Klient
+	Nazwa
+	Nazwa wyświetlana
+Adres
+E-mail
+
+Ładunek
+	Rodzaj ogólny (ro-ro / static)
+	Wymiary i waga
+ 
+Wycena
+Końcowe dane ładunku (rodzaj / kubatura / waga)
+Stawka podstawowa
+	Dodatki frachtowe
+Port załadunku
+Port wyładunku
+
+Funkcjonalność
+Zarządzanie kontem klienta
+- formularz umożliwiający rejestrację klienta w bazie danych (nazwa klienta / nazwa wyświetlana / data rejestracji / e-mail)
+
+Wprowadzanie informacji o ładunku
+- formularz umożliwiający wprowadzenie podstawowych danych ładunku:
+ro-ro (self propelled / towable) 	static (static on RT / static forkliftable)
+- formularz umożliwiający wprowadzenie wymiarów oraz wagi ładunku.
+
+Kalkulacja frachtu
+- formularz umożliwiający wprowadzenie danych potrzebnych do kalkulacji frachtu morskiego (końcowe dane ładunku: waga lub kubatura, port załadunku, port wyładunku, ilość sztuk ładunku, podstawowa stawka frachtowa, dodatki frachtowe).
+
+Wysłanie oferty do klienta
+- po stworzeniu kalkulacji końcowa oferta zawierająca wprowadzone dane oraz dodatkowe informacje jest wysyłana na adres e-mail klienta
+- dane z oferty są zapisywane w BD i są podpięte pod klienta
+
+Potwierdzanie zabukowania ładunku do przewozu
+- w przypadku złożenie bukingu przez klienta w BD następuje dodane komentarza „booked”.
