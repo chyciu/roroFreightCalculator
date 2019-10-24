@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RoroCalculatorApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(RoroCalculatorApplication.class, args);
+
     }
 
 }
