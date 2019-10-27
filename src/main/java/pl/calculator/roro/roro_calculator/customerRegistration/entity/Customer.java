@@ -19,7 +19,7 @@ public class Customer {
     private String customerDisplayedName;
     private String customerCity;
     private String customerPostCode;
-    private String cusomerStreet;
+    private String customerStreet;
     private int customerStrNumber;
     private int customerRoomNumber;
     private String customerEmail;

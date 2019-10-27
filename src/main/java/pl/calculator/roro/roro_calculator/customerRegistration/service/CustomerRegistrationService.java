@@ -38,7 +38,11 @@ public class CustomerRegistrationService {
                 .orElseThrow(EntityNotFoundException::new);
         update.setCustomerName(customer.getCustomerName());
         update.setCustomerDisplayedName(customer.getCustomerDisplayedName());
-        update.setCustomerAddress(customer.getCustomerAddress());
+        update.setCustomerCity(customer.getCustomerCity());
+        update.setCustomerPostCode(customer.getCustomerPostCode());
+        update.setCustomerStreet(customer.getCustomerStreet());
+        update.setCustomerStrNumber(customer.getCustomerStrNumber());
+        update.setCustomerRoomNumber(customer.getCustomerRoomNumber());
         update.setCustomerEmail(customer.getCustomerEmail());
         update.setCustomerRegistrationDate(customer.getCustomerRegistrationDate());
         return update;
