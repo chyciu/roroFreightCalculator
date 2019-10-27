@@ -10,7 +10,4 @@ public interface CustomerRepository extends JpaRepository <Customer, Long> {
 
     List<Customer> findCustomerByCustomerDisplayedName(String filter);
 
-    List<Customer> findCustomerByCustomerRegistrationDate (LocalDateTime dateOfRegistration);
-
-
 }

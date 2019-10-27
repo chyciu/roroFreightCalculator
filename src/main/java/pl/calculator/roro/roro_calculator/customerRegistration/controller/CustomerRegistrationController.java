@@ -23,8 +23,8 @@ public class CustomerRegistrationController {
     }
 
     @GetMapping("/{customerid}")
-    public Customer findCustomer(@PathVariable Long cusomerId) {
-        return customerRegistrationService.find(cusomerId);
+    public Customer findCustomer(@PathVariable Long customerId) {
+        return customerRegistrationService.find(customerId);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -35,15 +35,15 @@ public class CustomerRegistrationController {
 
 
     @PutMapping("/(customerid}")
-    public Customer updateCustomer(@RequestBody Customer customer, @PathVariable Long cusomerId) {
-        customer.setCustomerId(cusomerId);
+    public Customer updateCustomer(@RequestBody Customer customer, @PathVariable Long customerId) {
+        customer.setCustomerId(customerId);
         return customerRegistrationService.updateCustomer(customer);
     }
 
 
     @DeleteMapping("/{customerid}")
-    public void delateCustomer(@PathVariable Long customerIdToDelate) {
-        customerRegistrationService.deleteCustomer(customerIdToDelate);
+    public void delateCustomer(@PathVariable Long customerId) {
+        customerRegistrationService.deleteCustomer(customerId);
     }
 
 

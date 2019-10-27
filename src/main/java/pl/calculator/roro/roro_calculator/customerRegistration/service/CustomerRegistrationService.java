@@ -48,8 +48,8 @@ public class CustomerRegistrationService {
         return update;
     }
 
-    public void deleteCustomer(Long customerIdToDelete) {
-        Customer customer = customerRepository.findById(customerIdToDelete)
+    public void deleteCustomer(Long customerId) {
+        Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(EntityNotFoundException::new);
         customerRepository.delete(customer);
     }

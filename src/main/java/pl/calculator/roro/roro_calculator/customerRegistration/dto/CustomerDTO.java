@@ -1,20 +1,16 @@
-package pl.calculator.roro.roro_calculator.customerRegistration.entity;
-
+package pl.calculator.roro.roro_calculator.customerRegistration.dto;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
-@Table(name = "customers")
-public class Customer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerDTO {
 
     private Long customerId;
 
