@@ -16,24 +16,24 @@ public class CustomerRegistrationService {
 
     public final CustomerRepository customerRepository;
 
-    public List<Customer> findAll (String filter) {
+    public List<Customer> findAll(String filter) {
         if (StringUtils.isEmpty(filter)) {
             return customerRepository.findAll();
         }
         return customerRepository.findCustomerByCustomerDisplayedName("%" + filter + "%");
     }
 
-    public Customer find (Long customerId) {
+    public Customer find(Long customerId) {
         return customerRepository.findById(customerId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
-    public Customer createNewCustomer (Customer customer) {
+    public Customer createNewCustomer(Customer customer) {
 
         return customerRepository.save(customer);
     }
 
-    public Customer updateCustomer (Customer customer) {
+    public Customer updateCustomer(Customer customer) {
         Customer update = customerRepository.findById(customer.getCustomerId())
                 .orElseThrow(EntityNotFoundException::new);
         update.setCustomerName(customer.getCustomerName());
@@ -44,7 +44,7 @@ public class CustomerRegistrationService {
         return update;
     }
 
-    public void deleteCustomer (Long customerIdToDelete) {
+    public void deleteCustomer(Long customerIdToDelete) {
         Customer customer = customerRepository.findById(customerIdToDelete)
                 .orElseThrow(EntityNotFoundException::new);
         customerRepository.delete(customer);

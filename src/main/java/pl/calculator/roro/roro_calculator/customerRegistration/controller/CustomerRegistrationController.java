@@ -41,7 +41,7 @@ public class CustomerRegistrationController {
     }
 
 
-    @DeleteMapping("/{customedid}")
+    @DeleteMapping("/{customerid}")
     public void delateCustomer(@PathVariable Long customerIdToDelate) {
         customerRegistrationService.deleteCustomer(customerIdToDelate);
     }

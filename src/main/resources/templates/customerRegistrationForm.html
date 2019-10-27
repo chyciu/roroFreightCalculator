@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Registration</title>
+</head>
+<body>
+
+
+<div>
+    <h1>Customer Registration Form</h1>
+</div>
+
+<div>
+    <form action="/customers" method="post" th:object="${customerForm}">
+
+        <label for="customerName" th:text="#{customer.customerName}"></label>
+        <input type="text" id="customerName" name="customerName" th:field="*{customerName}">
+
+        <label for="displayedName" th:text="#{customer.customerDisplayedName}"></label>
+        <input type="text" id="displayedName" name="displayedName" th:field="*{customerDisplayedName}">
+
+        <label for="customeAddress" th:text="#{customer.customerAddress}"></label>
+        <input type="text" id="customeAddress" name="address" th:field="*{customerAddress}">
+
+        <label for="customerEmail" th:text="#{customer.customerEmail}"></label>
+        <input type="email" id="customerEmail" name="email">
+
+        <label for="registrationDate" th:datetime="#{customer.customerRegistrationDate}"></label>
+        <input type="datetime-local" id="registrationDate" name="registrationDate">
+    </form>
+</div>
+
+
+
+
+</body>
+</html>

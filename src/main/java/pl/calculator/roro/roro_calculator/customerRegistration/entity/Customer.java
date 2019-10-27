@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="customers")
+@Table(name = "customers")
 public class Customer {
 
     @Id
@@ -17,7 +17,11 @@ public class Customer {
     private Long customerId;
     private String customerName;
     private String customerDisplayedName;
-    private String customerAddress;
+    private String customerCity;
+    private String customerPostCode;
+    private String cusomerStreet;
+    private int customerStrNumber;
+    private int customerRoomNumber;
     private String customerEmail;
     private LocalDateTime customerRegistrationDate;
 

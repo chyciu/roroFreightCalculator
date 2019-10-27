@@ -1,39 +1,49 @@
 Krótki opis systemu
-Projekt zakłada utworzenie systemu umożliwiającego skalkulowanie frachtu morskiego na serwisie armatora ro-ro (roll in-roll off).
+    Projekt zakłada utworzenie systemu umożliwiającego skalkulowanie frachtu morskiego na serwisie armatora ro-ro (roll in-roll off).
 
-Główne funkcje systemu
-Rejestracja klienta
-Wprowadzenie danych ładunku
-Skalkulowanie frachtu morskiego
-Zapisanie kalkulacji w bazie danych
-Wysyłanie oferty do klienta drogą e-mail
-Potwierdzanie zabukowania ładunku do przewozu
+Główne funkcje systemu:
+    Rejestracja użytkownika systemu
+    Rejestracja klienta
+    Wprowadzenie danych ładunku
+    Skalkulowanie frachtu morskiego
+    Zapisanie kalkulacji w bazie danych
+    Wysyłanie oferty do klienta drogą e-mail
+    Potwierdzanie zabukowania ładunku do przewozu
 
-Technologie
-Spring + Hibernate
-HTML / CSS
+Technologie:
+    Spring + Hibernate
+    HTML / CSS
 
-Podstawowe byty
-Klient
+Podstawowe byty:
+    Użytkownik
+    Nazwa
+    Login
+    Hasło
+
+Klient:
 	Nazwa
 	Nazwa wyświetlana
-Adres
-E-mail
+    Adres (osobne pola: ulica, numer budynku, numer lokalu, kod pocztowy, miejscowość)
+    E-mail
 
 Ładunek
 	Rodzaj ogólny (ro-ro / static)
-	Wymiary i waga
- 
+	Wymiary (osobne pola: długość, szerokość, wysokość [metry])
+    Waga [tony metryczne]
+
 Wycena
-Końcowe dane ładunku (rodzaj / kubatura / waga)
-Stawka podstawowa
+    Końcowe dane ładunku (rodzaj / kubatura / waga)
+    Stawka podstawowa
 	Dodatki frachtowe
-Port załadunku
-Port wyładunku
+    Port załadunku
+    Port wyładunku
 
 Funkcjonalność
+Zarządzanie kontem użytkownika
+- formularz umożliwiający rejestrację użytkownika w bazie danych (nazwa użytkownika / login / hasło)
+
 Zarządzanie kontem klienta
-- formularz umożliwiający rejestrację klienta w bazie danych (nazwa klienta / nazwa wyświetlana / data rejestracji / e-mail)
+- formularz umożliwiający rejestrację klienta w bazie danych (nazwa klienta / nazwa wyświetlana / adres(miasto) / data rejestracji / e-mail)
 
 Wprowadzanie informacji o ładunku
 - formularz umożliwiający wprowadzenie podstawowych danych ładunku:
@@ -42,10 +52,9 @@ ro-ro (self propelled / towable) 	static (static on RT / static forkliftable)
 
 Kalkulacja frachtu
 - formularz umożliwiający wprowadzenie danych potrzebnych do kalkulacji frachtu morskiego (końcowe dane ładunku: waga lub kubatura, port załadunku, port wyładunku, ilość sztuk ładunku, podstawowa stawka frachtowa, dodatki frachtowe).
-
 Wysłanie oferty do klienta
 - po stworzeniu kalkulacji końcowa oferta zawierająca wprowadzone dane oraz dodatkowe informacje jest wysyłana na adres e-mail klienta
 - dane z oferty są zapisywane w BD i są podpięte pod klienta
 
 Potwierdzanie zabukowania ładunku do przewozu
-- w przypadku złożenie bukingu przez klienta w BD następuje dodane komentarza „booked”.
+- w przypadku złożenie bukingu przez klienta w BD następuje dodanie komentarza „booked”.
