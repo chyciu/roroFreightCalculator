@@ -24,6 +24,7 @@ public class Customer {
 
     @NotNull
     @Size(min=5, max=10)
+    @Column(unique = true)
     private String customerDisplayedName;
 
     @NotNull
@@ -44,6 +45,7 @@ public class Customer {
 
     @NotNull
     @Email
+    @Column(unique = true)
     private String customerEmail;
 
     @NotNull

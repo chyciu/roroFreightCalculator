@@ -15,10 +15,25 @@
     <form action="/customers" method="post" th:object="${customerForm}">
 
         <label for="customerName" th:text="#{customer.customerName}"></label>
-        <input type="text" id="customerName" name="customerName" th:field="*{customerName}">
+        <input type="text" id="customerName" name="customerName" th:field="*{customerName}" autocomplete="off">
 
         <label for="displayedName" th:text="#{customer.customerDisplayedName}"></label>
-        <input type="text" id="displayedName" name="displayedName" th:field="*{customerDisplayedName}">
+        <input type="text" id="displayedName" name="displayedName" th:field="*{customerDisplayedName}" autocomplete="off">
+
+        <label for="customerCity" th:text="#{customer.customerCity}"></label>
+        <input type="text" id="customerCity" name="customerCity" th:field="*{customerCity}" autocomplete="off">
+
+        <label for="customerPostCode" th:text="#{customer.customerPostCode}"></label>
+        <input type="text" id="customerPostCode" name="customerPostCode" th:field="*{customerPostCode}" autocomplete="off">
+
+        <label for="customerStreet" th:text="#{customer.customerStreet}"></label>
+        <input type="text" id="customerStreet" name="customerStreet" th:field="*{customerStreet}" autocomplete="off">
+
+        <label for="customerStrNumber" th:value="#{customer.customerStrNumber}"></label>
+        <input type="number" id="customerStrNumber" name="customerStrNumber" th:field="*{customerStrNumber}" autocomplete="off">
+
+        <label for="customerRoomNumber" th:value="#{customer.customerRoomNumber}"></label>
+        <input type="number" id="customerRoomNumber" name="ustomerRoomNumber" th:field="*{customerRoomNumber}" autocomplete="off">
 
         <label for="customerEmail" th:text="#{customer.customerEmail}"></label>
         <input type="email" id="customerEmail" name="email">

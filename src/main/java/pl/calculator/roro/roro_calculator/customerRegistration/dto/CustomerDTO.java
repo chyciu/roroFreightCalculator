@@ -3,6 +3,7 @@ package pl.calculator.roro.roro_calculator.customerRegistration.dto;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ public class CustomerDTO {
 
     @NotNull
     @Size(min=5, max=10)
+    @Column(unique = true)
     private String customerDisplayedName;
 
     @NotNull
@@ -40,6 +42,7 @@ public class CustomerDTO {
 
     @NotNull
     @Email
+    @Column(unique = true)
     private String customerEmail;
 
     @NotNull
