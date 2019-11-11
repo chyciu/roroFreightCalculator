@@ -1,10 +1,10 @@
 package pl.calculator.roro.roro_calculator.customerRegistration.controller;
 
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pl.calculator.roro.roro_calculator.customerRegistration.dto.CustomerDTO;
 import pl.calculator.roro.roro_calculator.customerRegistration.entity.Customer;
 import pl.calculator.roro.roro_calculator.customerRegistration.service.CustomerRegistrationService;
 
@@ -27,6 +27,7 @@ public class CustomerRegistrationController {
         return customerRegistrationService.find(customerId);
     }
 
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Customer addCustomer(@RequestBody Customer customer) {
@@ -45,6 +46,20 @@ public class CustomerRegistrationController {
     public void delateCustomer(@PathVariable Long customerId) {
         customerRegistrationService.deleteCustomer(customerId);
     }
+
+    @PostMapping
+    public String handleCustomerForm(@ModelAttribute("customerRegistrationForm") CustomerDTO customerDTO) {
+        customerRegistrationService.saveCurrentCustomer(customerDTO);
+        return "redirect:customers";
+    }
+
+    @ModelAttribute("customerRegistrationForm")
+    public CustomerDTO produceCustomer () {
+        return new CustomerDTO();
+    }
+
+
+
 
 
 

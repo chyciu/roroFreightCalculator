@@ -13,7 +13,7 @@
 </div>
 
 <div>
-    <form action="/customers" method="post" th:object="${customerForm}">
+    <form action="/customers" method="post" th:object="${customersForm}">
 
         <label for="customerName" th:text="#{customer.customerName}"></label>
         <input type="text" id="customerName" name="customerName" th:field="*{customerName}" autocomplete="off">
