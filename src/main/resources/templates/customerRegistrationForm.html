@@ -42,7 +42,7 @@
         <label for="registrationDate" th:datetime="#{customer.customerRegistrationDate}"></label>
         <input type="datetime-local" id="registrationDate" name="registrationDate">
 
-        <input type="submit" name="Submit">
+        <input type="submit" th:value="#{customer.form.submit}">
     </form>
 </div>
 
