@@ -1,14 +1,15 @@
-package pl.calculator.roro.roro_calculator.customerRegistration.service;
+package pl.calculator.roro.roro_calculator.service;
 
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import pl.calculator.roro.roro_calculator.customerRegistration.dto.CustomerDTO;
-import pl.calculator.roro.roro_calculator.customerRegistration.entity.Customer;
-import pl.calculator.roro.roro_calculator.customerRegistration.repository.CustomerRepository;
+import pl.calculator.roro.roro_calculator.dto.CustomerDTO;
+import pl.calculator.roro.roro_calculator.entity.Customer;
+import pl.calculator.roro.roro_calculator.repository.CustomerRepository;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -16,9 +17,8 @@ import java.util.List;
 public class CustomerRegistrationService {
 
     public final CustomerRepository customerRepository;
-    private CustomerDTO customerDTO;
 
-    public void create (Customer customerDTO) {
+    public Customer map (CustomerDTO customerDTO) {
         Customer entity = new Customer();
         entity.setCustomerName(customerDTO.getCustomerName());
         entity.setCustomerDisplayedName(customerDTO.getCustomerDisplayedName());
@@ -28,11 +28,13 @@ public class CustomerRegistrationService {
         entity.setCustomerStrNumber(customerDTO.getCustomerStrNumber());
         entity.setCustomerRoomNumber(customerDTO.getCustomerRoomNumber());
         entity.setCustomerEmail(customerDTO.getCustomerEmail());
-        entity.setCustomerRegistrationDate(customerDTO.getCustomerRegistrationDate());
+        entity.setCustomerRegistrationDate(LocalDateTime.now());
+        return entity;
     }
 
     public void saveCurrentCustomer (CustomerDTO customerDTO) {
-        this.customerDTO = customerDTO;
+        Customer entity = map(customerDTO);
+        customerRepository.save(entity);
     }
 
     public List<Customer> findAll(String filter) {
@@ -48,7 +50,6 @@ public class CustomerRegistrationService {
     }
 
     public Customer createNewCustomer(Customer customer) {
-
         return customerRepository.save(customer);
     }
 

@@ -1,4 +1,4 @@
-package pl.calculator.roro.roro_calculator.customerRegistration.exception;
+package pl.calculator.roro.roro_calculator.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

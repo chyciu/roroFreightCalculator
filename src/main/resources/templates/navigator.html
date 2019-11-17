@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class="container-fluid" th:fragment="navigator">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-brand" th:text="#{roroCalculator.app.name}"></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/customers" th:text="#{form.header}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">COŚ TUTAJ BĘDZIE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">COŚ TUTAJ BĘDZIE</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{navigator.languages}"></a>
+                    <div th:replace="fragments :: languages"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

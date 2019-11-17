@@ -1,9 +1,7 @@
-package pl.calculator.roro.roro_calculator.customerRegistration.entity;
+package pl.calculator.roro.roro_calculator.entity;
 
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
@@ -19,16 +17,14 @@ public class Customer {
     private Long customerId;
 
     @NotNull
-    @NotBlank
     private String customerName;
 
     @NotNull
-    @Size(min=5, max=10)
+    @Size(min=5, max=30)
     @Column(unique = true)
     private String customerDisplayedName;
 
     @NotNull
-    @NotBlank
     private String customerCity;
 
     @NotNull
@@ -38,18 +34,16 @@ public class Customer {
     private String customerStreet;
 
     @NotNull
-    private int customerStrNumber;
+    private String customerStrNumber;
 
     @NotNull
-    private int customerRoomNumber;
+    private String customerRoomNumber;
 
     @NotNull
     @Email
     @Column(unique = true)
     private String customerEmail;
 
-    @NotNull
-    @DateTimeFormat
     private LocalDateTime customerRegistrationDate;
 
 }

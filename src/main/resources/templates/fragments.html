@@ -6,11 +6,12 @@
 </head>
 <body>
 
-<div th:fragment="languages">
-    <a href="?lang=en_GB" th:text="#{language.english}"></a>&nbsp;|&nbsp;
-    <a href="?lang=de_DE" th:text="#{language.german}"></a>&nbsp;|&nbsp;
-    <a href="?lang_pl_PL" th:text="#{language.polish}"></a>
+<div class="dropdown-menu" aria-labelledby="dropdown01" th:fragment="languages">
+    <a class="dropdown-item" href="?lang=en_GB" th:text="#{language.english}"></a>
+    <a class="dropdown-item" href="?lang=de_DE" th:text="#{language.german}"></a>
+    <a class="dropdown-item" href="?lang_pl_PL" th:text="#{language.polish}"></a>
 </div>
+
 
 </body>
 </html>
