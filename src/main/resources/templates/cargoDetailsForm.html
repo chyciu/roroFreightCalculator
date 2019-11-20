@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::content})}">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class="container col-md-12" th:fragment="content">
+    <form th:action="@{/cargo}" method="post" th:object="${cargoForm}">
+
+        <h1 th:text="#{form.cargo.header}"></h1>
+
+    </form>
+</div>
+
+</body>
+</html>

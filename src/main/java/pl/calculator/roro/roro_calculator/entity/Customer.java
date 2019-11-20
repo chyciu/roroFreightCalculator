@@ -2,6 +2,9 @@ package pl.calculator.roro.roro_calculator.entity;
 
 
 import lombok.Data;
+import org.hibernate.annotations.Columns;
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
@@ -16,32 +19,32 @@ public class Customer {
 
     private Long customerId;
 
-    @NotNull
+    @NotBlank
     private String customerName;
 
-    @NotNull
+    @NotBlank
     @Size(min=5, max=30)
-    @Column(unique = true)
+    @Column(unique=true)
     private String customerDisplayedName;
 
-    @NotNull
+    @NotBlank
     private String customerCity;
 
-    @NotNull
+    @NotBlank
     private String customerPostCode;
 
-    @NotNull
+    @NotBlank
     private String customerStreet;
 
-    @NotNull
+    @NotBlank
     private String customerStrNumber;
 
-    @NotNull
+    @NotBlank
     private String customerRoomNumber;
 
-    @NotNull
+    @NotBlank
     @Email
-    @Column(unique = true)
+    @Column(unique=true)
     private String customerEmail;
 
     private LocalDateTime customerRegistrationDate;

@@ -7,11 +7,16 @@ import org.springframework.http.HttpStatus;
 @Getter
 public class EntityNotFoundException extends RuntimeException {
 
-//    public Long customerIdNotFound;
-//
-//    public EntityNotFoundException(Long customerIdNotFound) {
-//        super("Entity with Customer ID" + customerIdNotFound + "not found");
-//        this.customerIdNotFound = customerIdNotFound;
-//    }
+    private Long customerIdNotFound;
+    private String message;
+
+    public EntityNotFoundException(Long customerIdNotFound) {
+        super("Entity with Customer ID" + customerIdNotFound + "not found");
+        this.customerIdNotFound = customerIdNotFound;
+    }
+
+    public EntityNotFoundException (String message) {
+        super(message);
+    }
 
 }

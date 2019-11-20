@@ -7,15 +7,16 @@
 <body>
 
  <div class="container col-md-12" th:fragment="content">
-  <form action="/customers" method="post" th:object="${customersForm}">
+  <form th:action="@{/customers}" method="post" th:object="${customersForm}">
 
-      <h1 th:text="#{form.header}"></h1>
+      <h1 th:text="#{form.customers.header}"></h1>
 
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="customerName"></label>
         <input type="text" id="customerName" class="form-control border border-primary"
                th:placeholder="#{customer.customerName}" name="customerName" th:field="*{customerName}" autocomplete="off">
+          <div th:if="${param.errorDTO}" class="alert alert-warning" th:text="#{form.validation.notBlank}"></div>
       </div>
       <div class="form-group col-md-6">
         <label for="displayedName"></label>

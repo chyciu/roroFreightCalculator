@@ -3,43 +3,37 @@ package pl.calculator.roro.roro_calculator.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 @Entity
 @Table(name="cargo")
-public class CargoKindAndDimensionsAndWeight {
+public class CargoDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long cargoID;
 
-    @NotNull
+    @NotBlank
     private KindOfCargo kindOfCargo;
 
-    @NotNull
+    @NotBlank
     @Size(max = 30)
     private String nameOfCommodity;
 
-    @NotNull
+    @NotBlank
     private double lenght;
 
-    @NotNull
+    @NotBlank
     private double width;
 
-    @NotNull
+    @NotBlank
     private double height;
 
-    @NotNull
+    @NotBlank
     private double weight;
-
-
-
-
-
-
-
 
 }

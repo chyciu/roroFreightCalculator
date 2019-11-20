@@ -1,12 +1,11 @@
 package pl.calculator.roro.roro_calculator.dto;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -15,32 +14,32 @@ public class CustomerDTO {
 
     private Long customerId;
 
-    @NotNull
+    @NotBlank(message = "{form.validation.notBlank}")
     private String customerName;
 
-    @NotNull
-    @Size(min=5, max=30)
-    @Column(unique = true)
+    @NotBlank(message = "{form.validation.notBlank}")
+    @Size(min=5, max=30, message = "form.validation.size}")
+    @Column(unique=true)
     private String customerDisplayedName;
 
-    @NotNull
+    @NotBlank(message = "{form.validation.notBlank}")
     private String customerCity;
 
-    @NotNull
+    @NotBlank(message = "{form.validation.notBlank}")
     private String customerPostCode;
 
-    @NotNull
+    @NotBlank(message = "{form.validation.notBlank}")
     private String customerStreet;
 
-    @NotNull
+    @NotBlank(message = "{form.validation.notBlank}")
     private String customerStrNumber;
 
-    @NotNull
+    @NotBlank(message = "{form.validation.notBlank}")
     private String customerRoomNumber;
 
-    @NotNull
+    @NotBlank(message = "{form.validation.notBlank}")
     @Email
-    @Column(unique = true)
+    @Column(unique=true)
     private String customerEmail;
 
     private LocalDateTime customerRegistrationDate;
