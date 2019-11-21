@@ -35,4 +35,5 @@ public class CargoDetailsDTO {
 
         @NotNull
         private double weight;
+
 }

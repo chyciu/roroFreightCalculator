@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.calculator.roro.roro_calculator.dto.CargoDetailsDTO;
+import pl.calculator.roro.roro_calculator.entity.KindOfCargo;
 import pl.calculator.roro.roro_calculator.service.CargoService;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -23,7 +26,7 @@ public class CargoController {
         return "cargoDetailsForm";
     }
 
-    public String handleCargoForm (@Valid @ModelAttribute(name="cargoForm")CargoDetailsDTO cargoDetailsDTO, BindingResult errors) {
+    public String handleCargoForm (@Valid @ModelAttribute(name="cargoForm") CargoDetailsDTO cargoDetailsDTO, BindingResult errors) {
         if (errors.hasErrors()) {
             return "/cargo";
         }
@@ -36,6 +39,14 @@ public class CargoController {
     @ModelAttribute(name = "cargoForm")
     public CargoDetailsDTO produceCargo (){
         return new CargoDetailsDTO();
+    }
+
+
+    @ModelAttribute("allKindOfCargo")
+    public List<KindOfCargo> selectKinds() {
+        return Arrays.asList
+                (KindOfCargo.RO_RO_SELF_PROPELLED, KindOfCargo.RO_RO_TOWABLE,
+                KindOfCargo.STATIC_ON_RT, KindOfCargo.STATIC_FORKLIFTABLE);
     }
 
 }

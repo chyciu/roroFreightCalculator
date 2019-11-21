@@ -7,11 +7,57 @@
 <body>
 
 <div class="container col-md-12" th:fragment="content">
-    <form th:action="@{/cargo}" method="post" th:object="${cargoForm}">
+  <form th:action="@{/cargo}" method="post" th:object="${cargoForm}">
 
         <h1 th:text="#{form.cargo.header}"></h1>
 
-    </form>
+    <div class="form-row" th:marginheight="">
+       <div class="form-group col-md-6">
+           <label></label>
+           <input type="text" name="nameOfCommodity" class="form-control border border-primary"
+           th:placeholder="#{cargo.nameOfCommodity}" th:field="*{nameOfCommodity}" autocomplete="off">
+        </div>
+        <div class="form-group col-md-6">
+            <label></label>
+             <select class="form-control border border-primary" name="customerName" th:field="*{kindOfCargo}">
+<!--                 <option th:each="kindOfCargo : ${allKindOfCargo}"-->
+<!--                     th:value="${kindOfCargo}" th:text="#{${kindOfCargo}}">-->
+<!--                 </option>-->
+                 <option th:value="${allKindOfCargo.get(0)}" th:text="#{cargo.kindOfCargo.selfPropelled}"></option>
+                 <option th:value="${allKindOfCargo.get(1)}" th:text="#{cargo.kindOfCargo.towable}"></option>
+                 <option th:value="${allKindOfCargo.get(2)}" th:text="#{cargo.kindOfCargo.onRT}"></option>
+                 <option th:value="${allKindOfCargo.get(3)}" th:text="#{cargo.kindOfCargo.forkliftable}"></option>
+             </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col md-3">
+            <label for="lenght"></label>
+            <input th:type="#{numbers}" id="lenght" class="form-control border border-primary"
+            th:placeholder="#{cargo.lenght}" th:field="*{lenght}" autocomplete="off">
+        </div>
+        <div class="form-group col md-3">
+            <label for="width"></label>
+            <input th:type="#{numbers}" id="width" class="form-control border border-primary"
+            th:placeholder="#{cargo.width}" th:field="*{width}" autocomplete="off">
+        </div>
+        <div class="form-group col md-3">
+            <label for="height"></label>
+            <input th:type="#{numbers}" id="height" class="form-control border border-primary"
+            th:placeholder="#{cargo.height}" th:field="*{width}" autocomplete="off">
+        </div>
+        <div class="form-group col md-3">
+            <label for="weight"></label>
+            <input th:type="#{numbers}" id="weight" class="form-control border border-primary"
+            th:placeholder="#{cargo.weight}" th:field="*{weight}" autocomplete="off">
+        </div>
+    </div>
+
+        <div>
+            <input type="submit" class="btn btn-primary btn-lg btn-block" th:value="#{customer.form.submit}">
+        </div>
+  </form>
 </div>
 
 </body>
