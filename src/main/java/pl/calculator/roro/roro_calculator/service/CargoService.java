@@ -1,6 +1,7 @@
 package pl.calculator.roro.roro_calculator.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import pl.calculator.roro.roro_calculator.dto.CargoDetailsDTO;
 import pl.calculator.roro.roro_calculator.entity.CargoDetails;
@@ -13,7 +14,7 @@ public class CargoService {
 
     public final CargoRepository cargoRepository;
 
-    public CargoDetails map (CargoDetailsDTO cargoDetailsDTO) {
+    private CargoDetails map (CargoDetailsDTO cargoDetailsDTO) {
         CargoDetails entity = new CargoDetails();
         entity.setKindOfCargo(cargoDetailsDTO.getKindOfCargo());
         entity.setNameOfCommodity(cargoDetailsDTO.getNameOfCommodity());
@@ -30,7 +31,7 @@ public class CargoService {
     }
 
     public double cargoVolumeCalculatorAndChooserOfBiggerValue (CargoDetailsDTO cargoDetailsDTO) {
-       double cargoVolume = Math.round(cargoDetailsDTO.getLenght() * cargoDetailsDTO.getHeight() * cargoDetailsDTO.getWidth());
+        double cargoVolume = Math.round(cargoDetailsDTO.getLenght() * cargoDetailsDTO.getHeight() * cargoDetailsDTO.getWidth());
 
         if (cargoDetailsDTO.getWeight() > cargoVolume) {
             return cargoDetailsDTO.getWeight();

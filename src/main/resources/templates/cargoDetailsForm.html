@@ -6,12 +6,13 @@
 </head>
 <body>
 
+
 <div class="container col-md-12" th:fragment="content">
   <form th:action="@{/cargo}" method="post" th:object="${cargoForm}">
 
         <h1 th:text="#{form.cargo.header}"></h1>
 
-    <div class="form-row" th:marginheight="">
+    <div class="form-row">
        <div class="form-group col-md-6">
            <label></label>
            <input type="text" name="nameOfCommodity" class="form-control border border-primary"
@@ -58,6 +59,15 @@
             <input type="submit" class="btn btn-primary btn-lg btn-block" th:value="#{customer.form.submit}">
         </div>
   </form>
+
+<div class="modal-body col-md-12">
+      <div class="input-group input-group-lg col-md-8">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">FREIGHT TONS which will be taken to sea freight calculation is: </span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+      </div>
+    </div>
 </div>
 
 </body>

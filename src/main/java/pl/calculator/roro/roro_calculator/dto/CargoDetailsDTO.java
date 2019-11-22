@@ -6,34 +6,33 @@ import pl.calculator.roro.roro_calculator.entity.KindOfCargo;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.math.BigDecimal;
 
 @Data
 public class CargoDetailsDTO {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-
         private Long cargoID;
 
-        @NotNull
         private KindOfCargo kindOfCargo;
 
-        @NotNull
+        @NotBlank
         @Size(max = 30)
         private String nameOfCommodity;
 
-        @NotNull
+        @Digits(integer = 5, fraction = 2)
+        @DecimalMax("50.0")
         private double lenght;
 
-        @NotNull
+        @DecimalMax("6.0")
         private double width;
 
-        @NotNull
+        @DecimalMax("4.5")
         private double height;
 
-        @NotNull
+        @DecimalMax("150.0")
         private double weight;
 
 }

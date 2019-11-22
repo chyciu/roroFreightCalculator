@@ -3,10 +3,8 @@ package pl.calculator.roro.roro_calculator.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -17,23 +15,23 @@ public class CargoDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cargoID;
 
-    @NotBlank
     private KindOfCargo kindOfCargo;
 
     @NotBlank
     @Size(max = 30)
     private String nameOfCommodity;
 
-    @NotBlank
+    @Digits(integer = 5, fraction = 2)
+    @DecimalMax("50.0")
     private double lenght;
 
-    @NotBlank
+    @DecimalMax("6.0")
     private double width;
 
-    @NotBlank
+    @DecimalMax("4.5")
     private double height;
 
-    @NotBlank
+    @DecimalMax("150.0")
     private double weight;
 
 }
