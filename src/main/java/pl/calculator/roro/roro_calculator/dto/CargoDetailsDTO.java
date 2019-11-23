@@ -1,6 +1,7 @@
 package pl.calculator.roro.roro_calculator.dto;
 
 import lombok.Data;
+import pl.calculator.roro.roro_calculator.entity.Customer;
 import pl.calculator.roro.roro_calculator.entity.KindOfCargo;
 
 import javax.persistence.GeneratedValue;
@@ -12,27 +13,34 @@ import java.math.BigDecimal;
 @Data
 public class CargoDetailsDTO {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long cargoID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long cargoID;
 
-        private KindOfCargo kindOfCargo;
+    private KindOfCargo kindOfCargo;
 
-        @NotBlank
-        @Size(max = 30)
-        private String nameOfCommodity;
+    @NotBlank
+    @Size(max = 30)
+    private String nameOfCommodity;
 
-        @Digits(integer = 5, fraction = 2)
-        @DecimalMax("50.0")
-        private double lenght;
+    @NotNull
+    @DecimalMax("50.0")
+    private Double lenght;
 
-        @DecimalMax("6.0")
-        private double width;
+    @NotNull
+    @DecimalMax("6.0")
+    private Double width;
 
-        @DecimalMax("4.5")
-        private double height;
+    @NotNull
+    @DecimalMax("4.5")
+    private Double height;
 
-        @DecimalMax("150.0")
-        private double weight;
+    @NotNull
+    @DecimalMax("150.0")
+    private Double weight;
+
+    private Customer customer;
+
+    private Double cargoVolume;
 
 }

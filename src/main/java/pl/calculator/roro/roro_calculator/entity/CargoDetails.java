@@ -1,10 +1,13 @@
 package pl.calculator.roro.roro_calculator.entity;
 
+import com.sun.org.glassfish.gmbal.ParameterNames;
 import lombok.Data;
+import org.springframework.data.repository.query.Param;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.security.Principal;
 
 @Data
 @Entity
@@ -23,15 +26,31 @@ public class CargoDetails {
 
     @Digits(integer = 5, fraction = 2)
     @DecimalMax("50.0")
-    private double lenght;
+    private Double lenght;
 
+    @NotNull
     @DecimalMax("6.0")
-    private double width;
+    private Double width;
 
+    @NotNull
     @DecimalMax("4.5")
-    private double height;
+    private Double height;
 
+    @NotNull
     @DecimalMax("150.0")
-    private double weight;
+    private Double weight;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "customerid")
+    private Customer customer;
+
+
+    private Double cargoVolume;
+
+
+    public Double cargoVolumeCalculate (Double lenght, Double width, Double height) {
+        cargoVolume = lenght * width * height;
+        return cargoVolume;
+    }
 
 }

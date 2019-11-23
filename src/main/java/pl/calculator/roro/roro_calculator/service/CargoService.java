@@ -14,7 +14,7 @@ public class CargoService {
 
     public final CargoRepository cargoRepository;
 
-    private CargoDetails map (CargoDetailsDTO cargoDetailsDTO) {
+    private CargoDetails map(CargoDetailsDTO cargoDetailsDTO) {
         CargoDetails entity = new CargoDetails();
         entity.setKindOfCargo(cargoDetailsDTO.getKindOfCargo());
         entity.setNameOfCommodity(cargoDetailsDTO.getNameOfCommodity());
@@ -25,20 +25,26 @@ public class CargoService {
         return entity;
     }
 
-    public void saveCargoDetails (CargoDetailsDTO cargoDetailsDTO) {
+    public void saveCargoDetails(CargoDetailsDTO cargoDetailsDTO) {
         CargoDetails entity = map(cargoDetailsDTO);
         cargoRepository.save(entity);
     }
 
-    public double cargoVolumeCalculatorAndChooserOfBiggerValue (CargoDetailsDTO cargoDetailsDTO) {
-        double cargoVolume = Math.round(cargoDetailsDTO.getLenght() * cargoDetailsDTO.getHeight() * cargoDetailsDTO.getWidth());
+    public Double cargoVolumeCalculatorAndChooserOfBiggerValue(Double cargoVolume, Double weight) {
+        CargoDetailsDTO cargoDetailsDTO = new CargoDetailsDTO();
+        cargoVolume = cargoDetailsDTO.getLenght() * cargoDetailsDTO.getHeight() * cargoDetailsDTO.getWidth();
+        cargoDetailsDTO.setCargoVolume(cargoVolume);
+        cargoDetailsDTO.setWeight(weight);
 
-        if (cargoDetailsDTO.getWeight() > cargoVolume) {
-            return cargoDetailsDTO.getWeight();
-        } else if (cargoVolume > cargoDetailsDTO.getWeight()) {
-            return cargoVolume;
-        } else {
-            return cargoVolume;
+            if (cargoVolume > 0 && weight > cargoVolume) {
+                return weight;
+            } else if (cargoVolume > 0 && cargoVolume > weight) {
+                return cargoVolume;
+            } else {
+                return cargoVolume;
+            }
         }
-    }
+
+
 }
+

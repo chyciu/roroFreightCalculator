@@ -10,6 +10,7 @@ import pl.calculator.roro.roro_calculator.repository.CustomerRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ import java.util.List;
 public class CustomerRegistrationService {
 
     public final CustomerRepository customerRepository;
+
 
     public Customer map (CustomerDTO customerDTO) {
         Customer entity = new Customer();

@@ -9,6 +9,8 @@ import pl.calculator.roro.roro_calculator.dto.CustomerDTO;
 import pl.calculator.roro.roro_calculator.service.CustomerRegistrationService;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -36,7 +38,6 @@ public class CustomerRegistrationController {
 
     @GetMapping
     public String register () {
-
         return "customerRegistrationForm";
     }
 
@@ -53,6 +54,8 @@ public class CustomerRegistrationController {
     public CustomerDTO produceCustomer () {
         return new CustomerDTO();
     }
+
+
 
 //    @PutMapping("/(customerid}")
 //    public Customer updateCustomer(@RequestBody Customer customer, @PathVariable Long customerId) {
