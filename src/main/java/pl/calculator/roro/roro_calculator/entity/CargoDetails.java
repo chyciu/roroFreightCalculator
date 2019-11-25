@@ -47,10 +47,4 @@ public class CargoDetails {
 
     private Double cargoVolume;
 
-
-    public Double cargoVolumeCalculate (Double lenght, Double width, Double height) {
-        cargoVolume = lenght * width * height;
-        return cargoVolume;
-    }
-
 }
