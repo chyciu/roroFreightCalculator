@@ -1,14 +1,12 @@
 package pl.calculator.roro.roro_calculator.dto;
 
 import lombok.Data;
+import pl.calculator.roro.roro_calculator.entity.Currency;
 import pl.calculator.roro.roro_calculator.entity.Customer;
 import pl.calculator.roro.roro_calculator.entity.KindOfCargo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.math.BigDecimal;
 
 @Data
 public class CargoDetailsDTO {
@@ -17,6 +15,7 @@ public class CargoDetailsDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cargoID;
 
+    @Enumerated(EnumType.STRING)
     private KindOfCargo kindOfCargo;
 
     @NotBlank
@@ -39,8 +38,28 @@ public class CargoDetailsDTO {
     @DecimalMax("150.0")
     private Double weight;
 
+    @NotNull
     private Customer customer;
 
     private Double cargoVolume;
+
+    @NotBlank
+    private String portOfLoad;
+
+    @NotBlank
+    private String portOfDischarge;
+
+    @NotNull
+    private Double oceanRate;
+
+    private Double baf;
+
+    private Double totalOtherAdditional;
+
+    @NotNull
+    private Double howManyUnits;
+
+    @Enumerated(EnumType.STRING)
+    private Currency currency;
 
 }

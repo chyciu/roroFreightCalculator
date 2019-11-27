@@ -1,39 +1,60 @@
 package pl.calculator.roro.roro_calculator.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
+import org.apache.commons.math3.util.Precision;
 import org.springframework.stereotype.Service;
 import pl.calculator.roro.roro_calculator.dto.CargoDetailsDTO;
 import pl.calculator.roro.roro_calculator.dto.CustomerDTO;
 import pl.calculator.roro.roro_calculator.entity.CargoDetails;
-import pl.calculator.roro.roro_calculator.entity.KindOfCargo;
+import pl.calculator.roro.roro_calculator.mapper.CargoMapper;
 import pl.calculator.roro.roro_calculator.repository.CargoRepository;
+import pl.calculator.roro.roro_calculator.repository.CustomerRepository;
+
+import java.math.RoundingMode;
 
 
 @RequiredArgsConstructor
 @Service
 public class CargoService {
 
-    public final CargoRepository cargoRepository;
+    private final CargoMapper cargoMapper;
+    private final CargoRepository cargoRepository;
+    private final CustomerRepository customerRepository;
 
-    private CargoDetails map(CargoDetailsDTO cargoDetailsDTO) {
-        CargoDetails entity = new CargoDetails();
-        entity.setKindOfCargo(cargoDetailsDTO.getKindOfCargo());
-        entity.setNameOfCommodity(cargoDetailsDTO.getNameOfCommodity());
-        entity.setWeight(cargoDetailsDTO.getWeight());
-        entity.setLenght(cargoDetailsDTO.getLenght());
-        entity.setWidth(cargoDetailsDTO.getWidth());
-        entity.setHeight(cargoDetailsDTO.getHeight());
-        return entity;
-    }
+//    private CargoDetails map(CargoDetailsDTO cargoDetailsDTO) {
+//        CargoDetails entity = new CargoDetails();
+//        entity.setKindOfCargo(cargoDetailsDTO.getKindOfCargo());
+//        entity.setNameOfCommodity(cargoDetailsDTO.getNameOfCommodity());
+//        entity.setWeight(cargoDetailsDTO.getWeight());
+//        entity.setLenght(cargoDetailsDTO.getLenght());
+//        entity.setWidth(cargoDetailsDTO.getWidth());
+//        entity.setHeight(cargoDetailsDTO.getHeight());
+//        entity.setCargoVolume(cargoDetailsDTO.getCargoVolume());
+//        entity.setPortOfLoad(cargoDetailsDTO.getPortOfLoad());
+//        entity.setPortOfDischarge(cargoDetailsDTO.getPortOfDischarge());
+//        entity.setOceanRate(cargoDetailsDTO.getOceanRate());
+//        entity.setBaf(cargoDetailsDTO.getBaf());
+//        entity.setTotalOtherAdditional(cargoDetailsDTO.getTotalOtherAdditional());
+//        entity.setHowManyUnits(cargoDetailsDTO.getHowManyUnits());
+//        entity.setCurrency(cargoDetailsDTO.getCurrency());
+//        return entity;
+//    }
+//
+//    public void saveCargoDetails(CargoDetailsDTO cargoDetailsDTO) {
+//        CargoDetails entity = map(cargoDetailsDTO);
+//        cargoRepository.save(entity);
+//    }
 
-    public void saveCargoDetails(CargoDetailsDTO cargoDetailsDTO) {
-        CargoDetails entity = map(cargoDetailsDTO);
-        cargoRepository.save(entity);
+    //above two methods and below one are the same.
+
+    public CargoDetailsDTO saveCargoDetails (CargoDetailsDTO cargoDetailsDTO) {
+        CargoDetails entity = cargoMapper.map(cargoDetailsDTO);
+        CargoDetails savedEntity = cargoRepository.save(entity);
+        return cargoMapper.map(savedEntity);
     }
 
     public Double cargoVolumeCalculatorAndChooserOfBiggerValue(CargoDetailsDTO cargoDetailsDTO) {
-        Double cargoVolume = cargoDetailsDTO.getLenght() * cargoDetailsDTO.getHeight() * cargoDetailsDTO.getWidth();
+        Double cargoVolume = Precision.round(cargoDetailsDTO.getLenght() * cargoDetailsDTO.getHeight() * cargoDetailsDTO.getWidth(), 2);
         cargoDetailsDTO.setCargoVolume(cargoVolume);
         cargoDetailsDTO.setWeight(cargoDetailsDTO.getWeight());
 
@@ -46,13 +67,22 @@ public class CargoService {
             }
         }
 
-     public String cargoInfoFromForm (CargoDetailsDTO cargoDetailsDTO, KindOfCargo kindOfCargo, CustomerDTO customerDTO) {
-        String customer = customerDTO.getCustomerDisplayedName();
-        String nameOfCargo = cargoDetailsDTO.getNameOfCommodity();
-        String kindOfCargoFmForm = kindOfCargo.name();
-        return customer + " / " + nameOfCargo + " / " + kindOfCargoFmForm;
+     public String cargoInfoFromForm (CargoDetailsDTO cargoDetailsDTO, CustomerDTO customerDTO) {
+        String info = "Customer: " + customerDTO.getCustomerDisplayedName() + "/n" +
+        "Name of commodity: " + cargoDetailsDTO.getNameOfCommodity() + "/n" +
+        "Kind of Cargo: " + cargoDetailsDTO.getKindOfCargo() + "/n" +
+         "Port of load: " + cargoDetailsDTO.getPortOfLoad() + "/n" +
+        "Port of disccharge: " + cargoDetailsDTO.getPortOfDischarge();
+
+        return info;
      }
 
+
+     public Double fullRateCalculator (CargoDetailsDTO cargoDetailsDTO) {
+        Double freightRateTotal = (cargoDetailsDTO.getOceanRate() + cargoDetailsDTO.getBaf()
+                + cargoDetailsDTO.getTotalOtherAdditional()) * cargoDetailsDTO.getHowManyUnits();
+        return freightRateTotal;
+     }
 
 }
 

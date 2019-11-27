@@ -28,8 +28,10 @@
         <div class="form-group col-md-4">
             <label></label>
              <select class="form-control border border-primary" name="kindOfCargo" th:field="*{kindOfCargo}">
-<!--                 <option th:each="kindOfCargo : ${allKindOfCargo}"-->
-<!--                     th:value="${kindOfCargo}" th:text="#{${kindOfCargo}}">-->
+<!--                 &lt;!&ndash;/*@thymesVar id="kindOfCargo" type="pl.calculator.roro.roro_calculator.entity.KindOfCargo"*/&ndash;&gt;-->
+<!--                 &lt;!&ndash;/*@thymesVar id="values" type="pl.calculator.roro.roro_calculator.entity.KindOfCargo"*/&ndash;&gt;-->
+<!--                 <option th:each="kindOfCargo : ${T(pl.calculator.roro.roro_calculator.entity.KindOfCargo).values()}"-->
+<!--                     th:value="${kindOfCargo.name()}" th:text="#{${kindOfCargo.name()}}">-->
 <!--                 </option>-->
                  <option th:value="${allKindOfCargo.get(0).RO_RO_SELF_PROPELLED}" th:text="#{cargo.kindOfCargo.selfPropelled}"></option>
                  <option th:value="${allKindOfCargo.get(1).RO_RO_TOWABLE}" th:text="#{cargo.kindOfCargo.towable}"></option>
@@ -62,27 +64,77 @@
         </div>
     </div>
 
+<!--    <div class="modal-body col-md-12">-->
+<!--          <div class="input-group input-group-lg col-md-12">-->
+<!--              <div class="input-group-prepend">-->
+<!--                  <span class="input-group-text" th:text="#{cargo.volume.freightton}"></span>-->
+<!--              </div>-->
+<!--              &lt;!&ndash;/*@thymesVar id="freightTon" type="pl.calculator.roro.roro_calculator.service.CargoService"*/&ndash;&gt;-->
+<!--              <span th:type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"-->
+<!--                    th:if="${freightTon}" th:text="${freightTon}"></span>-->
+<!--          </div>-->
+<!--    </div>-->
+
+      <div class="form-row">
+          <div class="form-group col-md-5">
+              <label for="portOfLoad"></label>
+              <input type="text" id="portOfLoad" class="form-control border border-primary" th:placeholder="#{cargo.port.load}"
+                     name="portOfLoad" th:field="*{portOfLoad}" autocomplete="off">
+          </div>
+
+          <div class="form-group col-md-5">
+              <label for="portOfDischarge"></label>
+              <input type="text" id="portOfDischarge" class="form-control border border-primary" th:placeholder="#{cargo.port.discharge}"
+                     name="portOfLoad" th:field="*{portOfDischarge}" autocomplete="off">
+          </div>
+          <div class="form-group col-md-2">
+              <label></label>
+              <select class="form-control border border-primary" name="currency" th:field="*{currency}">
+                  <option th:value="${allCurrencies.get(0)}" th:text="EUR"></option>
+                  <option th:value="${allCurrencies.get(1)}" th:text="USD"></option>
+              </select>
+          </div>
+      </div>
+
+      <div class="form-row">
+          <div class="form-group col md-3">
+              <label for="oceanRate"></label>
+              <input th:type="number" th:step="1" id="oceanRate" class="form-control border border-primary"
+                     th:placeholder="#{cargo.rate}" th:field="*{oceanRate}" autocomplete="off">
+          </div>
+          <div class="form-group col md-3">
+              <label for="baf"></label>
+              <input th:type="number" th:step="1" id="baf" class="form-control border border-primary"
+                     th:placeholder="#{cargo.baf}" th:field="*{baf}" autocomplete="off">
+          </div>
+          <div class="form-group col md-3">
+              <label for="otherAdd"></label>
+              <input th:type="number" th:step="1" id="otherAdd" class="form-control border border-primary"
+                     th:placeholder="#{cargo.otherAdd}" th:field="*{totalOtherAdditional}" autocomplete="off">
+          </div>
+          <div class="form-group col md-3">
+              <label for="howManyUnits"></label>
+              <input th:type="number" th:step="1" id="howManyUnits" class="form-control border border-primary"
+                     th:placeholder="#{cargo.howManyUnits}" th:field="*{howManyUnits}" autocomplete="off">
+          </div>
+      </div>
+
         <div>
             <input type="submit" class="btn btn-primary btn-lg btn-block" th:value="#{customer.form.submit}">
         </div>
-
-    <div class="modal-body col-md-12">
-      <div class="input-group input-group-lg col-md-8">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg" th:text="#{cargo.volume.freightton}"></span>
-        </div>
-            <span th:type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
-                th:if="${freightTon}" th:text="${freightTon}"></span>
-      </div>
-    </div>
   </form>
 
-    <div th:if="${infoFromForm}">
-    </div>
-    <p th:text="${infoFromForm}"></p>
-
+<div th:if="${freightTon}">
+    <p th:text="${freightTon}"></p>
+</div>
+<div th:if="${infoFromForm}">
+    <p th:tex="${infoFromForm}"></p>
+</div>
+<div th:if="${totalFreight}">
+    <p th:if="${totalFreight}"></p>
 </div>
 
+</div>
 
 </body>
 </html>

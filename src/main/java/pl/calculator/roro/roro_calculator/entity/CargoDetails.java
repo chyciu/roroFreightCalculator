@@ -18,6 +18,7 @@ public class CargoDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cargoID;
 
+    @Enumerated(EnumType.STRING)
     private KindOfCargo kindOfCargo;
 
     @NotBlank
@@ -40,11 +41,32 @@ public class CargoDetails {
     @DecimalMax("150.0")
     private Double weight;
 
+    private Double cargoVolume;
+
+    @NotBlank
+    private String portOfLoad;
+
+    @NotBlank
+    private String portOfDischarge;
+
+    @NotNull
+    private Double oceanRate;
+
+    private Double baf;
+
+    private Double totalOtherAdditional;
+
+    @NotNull
+    private Double howManyUnits;
+
+    @Enumerated(EnumType.STRING)
+    private Currency currency;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "customerid")
     private Customer customer;
 
 
-    private Double cargoVolume;
+
 
 }
