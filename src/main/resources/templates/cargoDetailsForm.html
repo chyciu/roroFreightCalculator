@@ -130,10 +130,30 @@
         </div>
     </form>
 
-    <div th:if="${freightTon}">
-        <p th:text="${freightTon}"></p>
-        <p th:text="${infoFromForm}"></p>
-        <p th:text="${totalFreight}"></p>
+<!--    <div th:if="${freightTon}">-->
+<!--        <p th:text="${freightTon}"></p>-->
+<!--        <p th:text="${infoFromForm}"></p>-->
+<!--        <p th:text="${totalFreight}"></p>-->
+<!--    </div>-->
+
+    <div class="card" th:if="${freightTon}">
+        <div class="card-header" th:text="#{offer.recap}"></div>
+        <div class="card-body">
+              <p th:text="#{cargo.volume.infoFromForm}"></p> <h5 th:text="${infoFromForm}"></h5>
+
+          <table>
+           <tr>
+               <td th:text="#{cargo.volume.freightton}"></td> <td th:text="${freightTon}"></td>
+           </tr>
+           <tr>
+               <td th:text="#{offer.total.value}"></td> <td th:text="${totalFreight}"></td>
+           </tr>
+           </table>
+        </div>
+
+        <div>
+            <a href="#" class="btn btn-primary">SEND OFFER TO CUSTOMER BY E-MAIL</a>
+        </div>
     </div>
 
 </div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::content})}">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class="container col-md-12" th:fragment="content">
+    <form th:action="@{/calculate}" th:method="post" th:object="${offerRecap}">
+
+        <div class="card">
+            <div class="card-header" th:text="#{offer.recap}"></div>
+            <div class="card-body">
+                <div th:if="${freightTon}">
+                    <p th:text="${freightTon}"></p>
+                    <p th:text="${infoFromForm}"></p>
+                    <p th:text="${totalFreight}"></p>
+                </div>
+
+                <a href="#" class="btn btn-primary">SEND OFFER TO CUSTOMER BY E-MAIL</a>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+
+</body>
+</html>

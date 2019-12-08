@@ -9,9 +9,7 @@ import pl.calculator.roro.roro_calculator.dto.CustomerDTO;
 import pl.calculator.roro.roro_calculator.entity.CargoDetails;
 import pl.calculator.roro.roro_calculator.mapper.CargoMapper;
 import pl.calculator.roro.roro_calculator.repository.CargoRepository;
-import pl.calculator.roro.roro_calculator.repository.CustomerRepository;
 
-import java.math.RoundingMode;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -68,11 +66,11 @@ public class CargoService {
         }
 
      public String cargoInfoFromForm (CargoDetailsDTO cargoDetailsDTO, CustomerDTO customerDTO) {
-        String info = "Customer: " + customerDTO.getCustomerDisplayedName() +
-        " Name of commodity: " + cargoDetailsDTO.getNameOfCommodity() +
-        " Kind of Cargo: " + cargoDetailsDTO.getKindOfCargo() +
-        " Port of load: " + cargoDetailsDTO.getPortOfLoad() +
-        " Port of discharge: " + cargoDetailsDTO.getPortOfDischarge();
+        String info = customerDTO.getCustomerDisplayedName() + " / "
+        + cargoDetailsDTO.getNameOfCommodity() + " / "
+        + cargoDetailsDTO.getKindOfCargo() + " / "
+        + cargoDetailsDTO.getPortOfLoad() + " / "
+        + cargoDetailsDTO.getPortOfDischarge();
 
         log.info("Customer: {} Name of commodity: {} Kind of Cargo: {} Port of load: {} Port of disccharge: {}",
                 customerDTO.getCustomerDisplayedName(),
