@@ -1,6 +1,5 @@
 package pl.calculator.roro.roro_calculator.controller;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.math3.util.Precision;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.calculator.roro.roro_calculator.dto.CargoDetailsDTO;
 import pl.calculator.roro.roro_calculator.dto.CustomerDTO;
-import pl.calculator.roro.roro_calculator.entity.CargoDetails;
 import pl.calculator.roro.roro_calculator.entity.Currency;
 import pl.calculator.roro.roro_calculator.entity.Customer;
 import pl.calculator.roro.roro_calculator.entity.KindOfCargo;
@@ -34,7 +32,7 @@ public class CargoController {
 
 
     @GetMapping
-    public String registerCargo (Model model) {
+    public String registerCargo(Model model) {
         List<Customer> customers = customerRegistrationService.findAll("");
         model.addAttribute("customerList", customers);
         return "cargoDetailsForm";
@@ -42,16 +40,16 @@ public class CargoController {
 
 
     @PostMapping
-    public String handleCargoForm (@Valid @ModelAttribute(name="cargoForm") CargoDetailsDTO cargoDetailsDTO, BindingResult errors) {
+    public String handleCargoForm(@Valid @ModelAttribute(name = "cargoForm") CargoDetailsDTO cargoDetailsDTO, BindingResult errors) {
         if (errors.hasErrors()) {
             return "cargo";
         }
         cargoService.saveCargoDetails(cargoDetailsDTO);
         return "redirect:/cargo";
-}
+    }
 
     @ModelAttribute(name = "cargoForm")
-    public CargoDetailsDTO produceCargo (){
+    public CargoDetailsDTO produceCargo() {
         return new CargoDetailsDTO();
     }
 
@@ -60,17 +58,17 @@ public class CargoController {
     public List<KindOfCargo> selectKinds() {
         return Arrays.asList
                 (KindOfCargo.RO_RO_SELF_PROPELLED, KindOfCargo.RO_RO_TOWABLE,
-                KindOfCargo.STATIC_ON_RT, KindOfCargo.STATIC_FORKLIFTABLE);
+                        KindOfCargo.STATIC_ON_RT, KindOfCargo.STATIC_FORKLIFTABLE);
     }
 
     @ModelAttribute("allCurrencies")
-    public List<Currency> selectCurrency () {
+    public List<Currency> selectCurrency() {
         return Arrays.asList(Currency.EUR, Currency.USD);
     }
 
 
     @PostMapping("/calculate")
-    public String calculate(@Valid @ModelAttribute(name="cargoForm") CargoDetailsDTO cargoDetailsDTO,
+    public String calculate(@Valid @ModelAttribute(name = "cargoForm") CargoDetailsDTO cargoDetailsDTO,
                             CustomerDTO customerDTO, RedirectAttributes redirectAttributes) {
         Double freightTon = cargoService.cargoVolumeCalculatorAndChooserOfBiggerValue(cargoDetailsDTO);
         Double totalFreight = Precision.round(cargoService.fullRateCalculator(cargoDetailsDTO) * freightTon, 0);

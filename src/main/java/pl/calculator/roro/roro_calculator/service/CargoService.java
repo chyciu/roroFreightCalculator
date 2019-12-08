@@ -1,6 +1,7 @@
 package pl.calculator.roro.roro_calculator.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.math3.util.Precision;
 import org.springframework.stereotype.Service;
 import pl.calculator.roro.roro_calculator.dto.CargoDetailsDTO;
@@ -12,14 +13,13 @@ import pl.calculator.roro.roro_calculator.repository.CustomerRepository;
 
 import java.math.RoundingMode;
 
-
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class CargoService {
 
     private final CargoMapper cargoMapper;
     private final CargoRepository cargoRepository;
-    private final CustomerRepository customerRepository;
 
 //    private CargoDetails map(CargoDetailsDTO cargoDetailsDTO) {
 //        CargoDetails entity = new CargoDetails();
@@ -68,11 +68,19 @@ public class CargoService {
         }
 
      public String cargoInfoFromForm (CargoDetailsDTO cargoDetailsDTO, CustomerDTO customerDTO) {
-        String info = "Customer: " + customerDTO.getCustomerDisplayedName() + "/n" +
-        "Name of commodity: " + cargoDetailsDTO.getNameOfCommodity() + "/n" +
-        "Kind of Cargo: " + cargoDetailsDTO.getKindOfCargo() + "/n" +
-         "Port of load: " + cargoDetailsDTO.getPortOfLoad() + "/n" +
-        "Port of disccharge: " + cargoDetailsDTO.getPortOfDischarge();
+        String info = "Customer: " + customerDTO.getCustomerDisplayedName() +
+        " Name of commodity: " + cargoDetailsDTO.getNameOfCommodity() +
+        " Kind of Cargo: " + cargoDetailsDTO.getKindOfCargo() +
+        " Port of load: " + cargoDetailsDTO.getPortOfLoad() +
+        " Port of discharge: " + cargoDetailsDTO.getPortOfDischarge();
+
+        log.info("Customer: {} Name of commodity: {} Kind of Cargo: {} Port of load: {} Port of disccharge: {}",
+                customerDTO.getCustomerDisplayedName(),
+                cargoDetailsDTO.getNameOfCommodity(),
+                cargoDetailsDTO.getKindOfCargo(),
+                cargoDetailsDTO.getPortOfLoad(),
+                cargoDetailsDTO.getPortOfDischarge()
+                );
 
         return info;
      }

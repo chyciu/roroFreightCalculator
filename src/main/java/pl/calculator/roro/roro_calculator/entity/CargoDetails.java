@@ -50,13 +50,17 @@ public class CargoDetails {
     private String portOfDischarge;
 
     @NotNull
+    @DecimalMin("0")
     private Double oceanRate;
 
+    @DecimalMin("0")
     private Double baf;
 
+    @DecimalMin("0")
     private Double totalOtherAdditional;
 
     @NotNull
+    @DecimalMin("1")
     private Double howManyUnits;
 
     @Enumerated(EnumType.STRING)
