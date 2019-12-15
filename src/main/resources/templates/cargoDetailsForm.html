@@ -22,8 +22,9 @@
             </div>
             <div class="form-group col-md-4">
                 <label></label>
-                <input type="text" name="nameOfCommodity" class="form-control border border-primary"
+                <input type="text" name="nameOfCommodity" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.nameOfCommodity}" th:field="*{nameOfCommodity}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('nameOfCommodity')}"></div>
             </div>
             <div class="form-group col-md-4">
                 <label></label>
@@ -48,50 +49,43 @@
         <div class="form-row">
             <div class="form-group col md-3">
                 <label for="lenght"></label>
-                <input th:type="number" th:step="0.01" id="lenght" class="form-control border border-primary"
+                <input th:type="number" th:step="0.01" id="lenght" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.lenght}" th:field="*{lenght}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('lenght')}"></div>
             </div>
             <div class="form-group col md-3">
                 <label for="width"></label>
-                <input th:type="number" th:step="0.01" id="width" class="form-control border border-primary"
+                <input th:type="number" th:step="0.01" id="width" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.width}" th:field="*{width}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('width')}"></div>
             </div>
             <div class="form-group col md-3">
                 <label for="height"></label>
-                <input th:type="number" th:step="0.01" id="height" class="form-control border border-primary"
+                <input th:type="number" th:step="0.01" id="height" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.height}" th:field="*{height}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('height')}"></div>
             </div>
             <div class="form-group col md-3">
                 <label for="weight"></label>
-                <input th:type="number" th:step="0.01" id="weight" class="form-control border border-primary"
+                <input th:type="number" th:step="0.01" id="weight" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.weight}" th:field="*{weight}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('weight')}"></div>
             </div>
         </div>
-
-        <!--    <div class="modal-body col-md-12">-->
-        <!--          <div class="input-group input-group-lg col-md-12">-->
-        <!--              <div class="input-group-prepend">-->
-        <!--                  <span class="input-group-text" th:text="#{cargo.volume.freightton}"></span>-->
-        <!--              </div>-->
-        <!--              &lt;!&ndash;/*@thymesVar id="freightTon" type="pl.calculator.roro.roro_calculator.service.CargoService"*/&ndash;&gt;-->
-        <!--              <span th:type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"-->
-        <!--                    th:if="${freightTon}" th:text="${freightTon}"></span>-->
-        <!--          </div>-->
-        <!--    </div>-->
 
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="portOfLoad"></label>
-                <input type="text" id="portOfLoad" class="form-control border border-primary"
-                       th:placeholder="#{cargo.port.load}"
-                       name="portOfLoad" th:field="*{portOfLoad}" autocomplete="off">
+                <input type="text" id="portOfLoad" class="form-control border border-primary" th:errorclass="is-invalid"
+                       th:placeholder="#{cargo.port.load}" name="portOfLoad" th:field="*{portOfLoad}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('portOfLoad')}"></div>
             </div>
 
             <div class="form-group col-md-5">
                 <label for="portOfDischarge"></label>
-                <input type="text" id="portOfDischarge" class="form-control border border-primary"
-                       th:placeholder="#{cargo.port.discharge}"
-                       name="portOfLoad" th:field="*{portOfDischarge}" autocomplete="off">
+                <input type="text" id="portOfDischarge" class="form-control border border-primary" th:errorclass="is-invalid"
+                       th:placeholder="#{cargo.port.discharge}" name="portOfDischarge" th:field="*{portOfDischarge}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('portOfDischarge')}"></div>
             </div>
             <div class="form-group col-md-2">
                 <label></label>
@@ -105,27 +99,32 @@
         <div class="form-row">
             <div class="form-group col md-3">
                 <label for="oceanRate"></label>
-                <input th:type="number" th:step="1" id="oceanRate" class="form-control border border-primary"
+                <input th:type="number" th:step="1" id="oceanRate" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.rate}" th:field="*{oceanRate}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('oceanRate')}"></div>
             </div>
             <div class="form-group col md-3">
                 <label for="baf"></label>
-                <input th:type="number" th:step="0.01" id="baf" class="form-control border border-primary"
+                <input th:type="number" th:step="0.01" id="baf" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.baf}" th:field="*{baf}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('baf')}"></div>
             </div>
             <div class="form-group col md-3">
                 <label for="otherAdd"></label>
-                <input th:type="number" th:step="1" id="otherAdd" class="form-control border border-primary"
+                <input th:type="number" th:step="1" id="otherAdd" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.otherAdd}" th:field="*{totalOtherAdditional}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('totalOtherAdditional')}"></div>
             </div>
             <div class="form-group col md-3">
                 <label for="howManyUnits"></label>
-                <input th:type="number" th:step="1" id="howManyUnits" class="form-control border border-primary"
+                <input th:type="number" th:step="1" id="howManyUnits" class="form-control border border-primary" th:errorclass="is-invalid"
                        th:placeholder="#{cargo.howManyUnits}" th:field="*{howManyUnits}" autocomplete="off">
+                <div class="invalid-feedback" th:text="${#fields.errors('howManyUnits')}"></div>
             </div>
         </div>
 
         <div>
+<!--            <a th:href="@{/offer-recap}" class="btn btn-link">LINK </a>-->
             <input type="submit" class="btn btn-primary btn-lg btn-block" th:value="#{customer.form.submit}">
         </div>
     </form>

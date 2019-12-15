@@ -14,56 +14,62 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="customerName"></label>
-        <input type="text" id="customerName" class="form-control border border-primary"
+        <input type="text" id="customerName" class="form-control border border-primary" th:errorclass="is-invalid"
                th:placeholder="#{customer.customerName}" name="customerName" th:field="*{customerName}" autocomplete="off">
-<!--          <div th:if="${param.errorDTO}" class="alert alert-warning" th:text="#{form.validation.notBlank}"></div>-->
-          <div th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" th:text="#{form.validation.notBlank}"></div>
+          <div class="invalid-feedback" th:text="${#fields.errors('customerName')}"></div>
       </div>
       <div class="form-group col-md-6">
         <label for="displayedName"></label>
-        <input type="text" id="displayedName" class="form-control border border-primary"
+        <input type="text" id="displayedName" class="form-control border border-primary" th:errorclass="is-invalid"
                th:placeholder="#{customer.customerDisplayedName}" name="displayedName"
                th:field="*{customerDisplayedName}" autocomplete="off">
+          <div class="invalid-feedback" th:text="${#fields.errors('customerDisplayedName')}"></div>
        </div>
     </div>
 
    <div class="form-row">
     <div class="form-group col-md-8">
         <label for="customerStreet"></label>
-        <input type="text" id="customerStreet" class="form-control border border-primary" th:placeholder="#{customer.customerStreet}"
-               name="customerStreet" th:field="*{customerStreet}" autocomplete="off">
+        <input type="text" id="customerStreet" class="form-control border border-primary" th:errorclass="is-invalid"
+               th:placeholder="#{customer.customerStreet}" name="customerStreet" th:field="*{customerStreet}" autocomplete="off">
+        <div class="invalid-feedback" th:text="${#fields.errors('customerStreet')}"></div>
     </div>
 
     <div class="form-group col-md-2">
         <label for="customerStrNumber"></label>
-        <input type="text" id="customerStrNumber" class="form-control border border-primary" th:placeholder="#{customer.customerStrNumber}"
-               name="customerStrNumber" th:field="*{customerStrNumber}" autocomplete="off">
+        <input type="text" id="customerStrNumber" class="form-control border border-primary" th:errorclass="is-invalid"
+               th:placeholder="#{customer.customerStrNumber}" name="customerStrNumber" th:field="*{customerStrNumber}" autocomplete="off">
+        <div class="invalid-feedback" th:text="${#fields.errors('customerStrNumber')}"></div>
     </div>
 
      <div class="form-group col-md-2">
         <label for="customerRoomNumber"></label>
-        <input type="text" id="customerRoomNumber" class="form-control border border-primary" th:placeholder="#{customer.customerRoomNumber}"
-               name="customerRoomNumber" th:field="*{customerRoomNumber}" autocomplete="off">
+        <input type="text" id="customerRoomNumber" class="form-control border border-primary" th:errorclass="is-invalid"
+               th:placeholder="#{customer.customerRoomNumber}" name="customerRoomNumber" th:field="*{customerRoomNumber}" autocomplete="off">
+         <div class="invalid-feedback" th:text="${#fields.errors('customerRoomNumber')}"></div>
      </div>
    </div>
 
    <div class="form-row">
       <div class="form-group col-md-5">
           <label for="customerCity"></label>
-          <input type="text" id="customerCity" class="form-control border border-primary" th:placeholder="#{customer.customerCity}"
-                 name="customerCity" th:field="*{customerCity}" autocomplete="off">
+          <input type="text" id="customerCity" class="form-control border border-primary" th:errorclass="is-invalid"
+                 th:placeholder="#{customer.customerCity}" name="customerCity" th:field="*{customerCity}" autocomplete="off">
+          <div class="invalid-feedback" th:text="${#fields.errors('customerCity')}"></div>
       </div>
 
       <div class="form-group col-md-3">
           <label for="customerPostCode"></label>
-          <input type="text" id="customerPostCode" class="form-control border border-primary" th:placeholder="#{customer.customerPostCode}"
-                 name="customerPostCode" th:field="*{customerPostCode}" autocomplete="off">
+          <input type="text" id="customerPostCode" class="form-control border border-primary" th:errorclass="is-invalid"
+                 th:placeholder="#{customer.customerPostCode}" name="customerPostCode" th:field="*{customerPostCode}" autocomplete="off">
+          <div class="invalid-feedback" th:text="${#fields.errors('customerPostCode')}"></div>
       </div>
 
      <div class="form-group col-md-4">
         <label for="customerEmail"></label>
-        <input type="email" id="customerEmail" class="form-control border border-primary" th:placeholder="#{customer.customerEmail}"
-               name="email" th:field="*{customerEmail}" autocomplete="off">
+        <input type="email" id="customerEmail" class="form-control border border-primary" th:errorclass="is-invalid"
+               th:placeholder="#{customer.customerEmail}"  name="email" th:field="*{customerEmail}" autocomplete="off">
+         <div class="invalid-feedback" th:text="${#fields.errors('customerEmail')}"></div>
      </div>
    </div>
 
