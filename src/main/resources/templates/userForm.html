@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::content})}">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class="container col-md-12" th:fragment="content">
+    <form th:action="@{/user-register}" method="post" th:object="${userForm}">
+
+        <h1 th:text="#{user.form.title}"></h1>
+
+        <div class="form-row">
+            <div class="form-group col md-6">
+                <label for="firstName"></label>
+                <input autocomplete="off" class="form-control border border-primary" id="firstName"
+                       th:errorclass="is-invalid" th:field="*{firstName}" th:placeholder="#{user.form.first.name}" th:type="text">
+                <div class="invalid-feedback" th:text="${#fields.errors('firstName')}"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col md-6">
+               <label for="lastName"></label>
+               <input autocomplete="off" class="form-control border border-primary" id="lastName"
+                      th:errorclass="is-invalid" th:field="*{lastName}" th:placeholder="#{user.form.last.name}" th:type="text">
+            <div class="invalid-feedback" th:text="${#fields.errors('lastName')}"></div>
+           </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col md-6">
+                <label for="login"></label>
+                <input autocomplete="off" class="form-control border border-primary" id="login"
+                       th:errorclass="is-invalid" th:field="*{login}" th:placeholder="#{user.form.login}" th:type="text">
+                <div class="invalid-feedback" th:text="${#fields.errors('login')}"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col md-6">
+                <label for="password"></label>
+                <input autocomplete="off" class="form-control border border-primary" id="password"
+                       th:errorclass="is-invalid" th:field="*{password}" th:placeholder="#{user.form.password}" th:type="password">
+                 <div class="invalid-feedback" th:text="${#fields.errors('password')}"></div>
+            </div>
+        </div>
+
+        <div class="form-row float-right">
+            <a th:href="@{/login}" class="btn btn-link" th:text="#{user.form.hasAccount}"></a>
+            <input type="submit" class="btn btn-primary btn-lg btn-block" th:value="#{user.form.sumbit}">
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
