@@ -10,8 +10,6 @@ import pl.calculator.roro.roro_calculator.mapper.CustomerMapper;
 import pl.calculator.roro.roro_calculator.repository.CustomerRepository;
 
 import javax.persistence.EntityNotFoundException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -21,27 +19,6 @@ public class CustomerRegistrationService {
     private final CustomerMapper customerMapper;
     private final CustomerRepository customerRepository;
 
-
-//    public Customer map (CustomerDTO customerDTO) {
-//        Customer entity = new Customer();
-//        entity.setCustomerName(customerDTO.getCustomerName());
-//        entity.setCustomerDisplayedName(customerDTO.getCustomerDisplayedName());
-//        entity.setCustomerCity(customerDTO.getCustomerCity());
-//        entity.setCustomerPostCode(customerDTO.getCustomerPostCode());
-//        entity.setCustomerStreet(customerDTO.getCustomerStreet());
-//        entity.setCustomerStrNumber(customerDTO.getCustomerStrNumber());
-//        entity.setCustomerRoomNumber(customerDTO.getCustomerRoomNumber());
-//        entity.setCustomerEmail(customerDTO.getCustomerEmail());
-//        entity.setCustomerRegistrationDate(LocalDateTime.now());
-//        return entity;
-//    }
-//
-//    public void saveCurrentCustomer (CustomerDTO customerDTO) {
-//        Customer entity = map(customerDTO);
-//        customerRepository.save(entity);
-//    }
-
-    //above two methods and below one are the same.
 
     public CustomerDTO saveCurrentCustomer (CustomerDTO customerDTO) {
         Customer entity = customerMapper.map(customerDTO);

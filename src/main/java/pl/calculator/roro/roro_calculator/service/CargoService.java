@@ -19,31 +19,6 @@ public class CargoService {
     private final CargoMapper cargoMapper;
     private final CargoRepository cargoRepository;
 
-//    private CargoDetails map(CargoDetailsDTO cargoDetailsDTO) {
-//        CargoDetails entity = new CargoDetails();
-//        entity.setKindOfCargo(cargoDetailsDTO.getKindOfCargo());
-//        entity.setNameOfCommodity(cargoDetailsDTO.getNameOfCommodity());
-//        entity.setWeight(cargoDetailsDTO.getWeight());
-//        entity.setLenght(cargoDetailsDTO.getLenght());
-//        entity.setWidth(cargoDetailsDTO.getWidth());
-//        entity.setHeight(cargoDetailsDTO.getHeight());
-//        entity.setCargoVolume(cargoDetailsDTO.getCargoVolume());
-//        entity.setPortOfLoad(cargoDetailsDTO.getPortOfLoad());
-//        entity.setPortOfDischarge(cargoDetailsDTO.getPortOfDischarge());
-//        entity.setOceanRate(cargoDetailsDTO.getOceanRate());
-//        entity.setBaf(cargoDetailsDTO.getBaf());
-//        entity.setTotalOtherAdditional(cargoDetailsDTO.getTotalOtherAdditional());
-//        entity.setHowManyUnits(cargoDetailsDTO.getHowManyUnits());
-//        entity.setCurrency(cargoDetailsDTO.getCurrency());
-//        return entity;
-//    }
-//
-//    public void saveCargoDetails(CargoDetailsDTO cargoDetailsDTO) {
-//        CargoDetails entity = map(cargoDetailsDTO);
-//        cargoRepository.save(entity);
-//    }
-
-    //above two methods and below one are the same.
 
     public CargoDetailsDTO saveCargoDetails (CargoDetailsDTO cargoDetailsDTO) {
         CargoDetails entity = cargoMapper.map(cargoDetailsDTO);

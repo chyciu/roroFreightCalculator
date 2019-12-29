@@ -1,0 +1,47 @@
+Below replaces "mapper method" in CusromerService & CargoService:
+
+    private CargoDetails map(CargoDetailsDTO cargoDetailsDTO) {
+        CargoDetails entity = new CargoDetails();
+        entity.setKindOfCargo(cargoDetailsDTO.getKindOfCargo());
+        entity.setNameOfCommodity(cargoDetailsDTO.getNameOfCommodity());
+        entity.setWeight(cargoDetailsDTO.getWeight());
+        entity.setLenght(cargoDetailsDTO.getLenght());
+        entity.setWidth(cargoDetailsDTO.getWidth());
+        entity.setHeight(cargoDetailsDTO.getHeight());
+        entity.setCargoVolume(cargoDetailsDTO.getCargoVolume());
+        entity.setPortOfLoad(cargoDetailsDTO.getPortOfLoad());
+        entity.setPortOfDischarge(cargoDetailsDTO.getPortOfDischarge());
+        entity.setOceanRate(cargoDetailsDTO.getOceanRate());
+        entity.setBaf(cargoDetailsDTO.getBaf());
+        entity.setTotalOtherAdditional(cargoDetailsDTO.getTotalOtherAdditional());
+        entity.setHowManyUnits(cargoDetailsDTO.getHowManyUnits());
+        entity.setCurrency(cargoDetailsDTO.getCurrency());
+        return entity;
+    }
+
+    public void saveCargoDetails(CargoDetailsDTO cargoDetailsDTO) {
+        CargoDetails entity = map(cargoDetailsDTO);
+        cargoRepository.save(entity);
+    }
+
+
+    ********
+
+        public Customer map (CustomerDTO customerDTO) {
+            Customer entity = new Customer();
+            entity.setCustomerName(customerDTO.getCustomerName());
+            entity.setCustomerDisplayedName(customerDTO.getCustomerDisplayedName());
+            entity.setCustomerCity(customerDTO.getCustomerCity());
+            entity.setCustomerPostCode(customerDTO.getCustomerPostCode());
+            entity.setCustomerStreet(customerDTO.getCustomerStreet());
+            entity.setCustomerStrNumber(customerDTO.getCustomerStrNumber());
+            entity.setCustomerRoomNumber(customerDTO.getCustomerRoomNumber());
+            entity.setCustomerEmail(customerDTO.getCustomerEmail());
+            entity.setCustomerRegistrationDate(LocalDateTime.now());
+            return entity;
+        }
+
+        public void saveCurrentCustomer (CustomerDTO customerDTO) {
+            Customer entity = map(customerDTO);
+            customerRepository.save(entity);
+        }
